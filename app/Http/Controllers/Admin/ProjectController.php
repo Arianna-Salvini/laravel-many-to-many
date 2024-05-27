@@ -48,8 +48,8 @@ class ProjectController extends Controller
         $validated['slug'] = $slug;
 
         if ($request->has('image')){
-        $image_path=Storage::put('uploads', $validated['image']);
-        $validated['image']=$image_path;
+            $image_path=Storage::put('uploads', $validated['image']);
+            $validated['image']=$image_path;
         };
 
         $project = Project::create($validated);
