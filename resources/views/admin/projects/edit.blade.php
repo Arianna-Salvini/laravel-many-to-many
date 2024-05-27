@@ -97,16 +97,32 @@
 
             {{-- CHECKBOX 👇 --}}
             <div class="mb-3 d-flex flex-wrap py-2 gap-3">
+
                 @foreach ($technologies as $technology)
-                    <div class="form-check">
-                        <input class="form-check-input @error('technologies') is-inavlid @enderror" type="checkbox"
-                            value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name="technologies[]"
-                            {{-- Use pluck('id') method on object collection Tecnology of current $project in order to have a new collection with the new id of tecnologies and,  combined with method to_Array, the collection of id will converted into an array --}}
-                            {{ in_array($technology->id, old('technologies', $project->technologies->pluck('id')->toArray())) ? 'checked' : '' }} />
-                        <label class="form-check-label" for="technology-{{ $technology->id }}"> {{ $technology->name }}
-                        </label>
-                    </div>
+                    @if ($errors->any())
+                        <div class="form-check">
+                            <input class="form-check-input @error('technologies') is-inavlid @enderror" type="checkbox"
+                                value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name="technologies[]"
+                                {{-- Use pluck('id') method on object collection Tecnology of current $project in order to have a new collection with the new id of tecnologies and,  combined with method toArray, the collection of id will converted into an array --}}
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">
+                                {{ $technology->name }}
+                            </label>
+                        </div>
+                    @else
+                        <div class="form-check">
+                            <input class="form-check-input @error('technologies') is-inavlid @enderror" type="checkbox"
+                                value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name="technologies[]"
+                                {{-- Use pluck('id') method on object collection Tecnology of current $project in order to have a new collection with the new id of tecnologies and,  combined with method toArray, the collection of id will converted into an array --}}
+                                {{ in_array($technology->id, $project->technologies->pluck('id')->toArray()) ? 'checked' : '' }}
+                                {{-- {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}  --}} />
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">
+                                {{ $technology->name }}
+                            </label>
+                        </div>
+                    @endif
                 @endforeach
+
                 @error('technologies')
                     <div class="text-danger py-2">
                         {{ $message }}
