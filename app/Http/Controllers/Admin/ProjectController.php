@@ -52,11 +52,14 @@ class ProjectController extends Controller
         $validated['image']=$image_path;
         };
 
+        $project = Project::create($validated);
+
+        if($request->has('technologies')){
+            $project->technologies()->attach($validated['technologies']);
+        }
         
         // dd($validated, $image_path);
         // dd($validated);
-        Project::create($validated);
-
 
 
         return to_route('admin.projects.index')->with('message', 'Project added successfully');

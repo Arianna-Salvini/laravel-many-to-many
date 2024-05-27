@@ -63,7 +63,6 @@
                                 <td>{{ $project->subtitle }}</td>
 
                                 {{-- <td>{{ $project->description }}</td> --}}
-                                <td>{{ $project->technologies }}</td>
 
                                 <td>
                                     @if ($project->type)
@@ -73,7 +72,12 @@
                                     @endif
 
                                 </td>
-
+                                <td>
+                                    {{-- @dd($project->tecnology)  --}}
+                                    @foreach ($project->technologies as $technology)
+                                        {{ $technology->name }}
+                                    @endforeach
+                                </td>
                                 <td>{{ $project->url }}</td>
                                 <td
                                     class="text-center d-flex flex-column justify-content-center align-items-center gap-2 p-3">

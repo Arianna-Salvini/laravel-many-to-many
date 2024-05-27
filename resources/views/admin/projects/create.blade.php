@@ -81,7 +81,7 @@
             <div class="mb-3 d-flex flex-wrap py-2 gap-3">
                 @foreach ($technologies as $technology)
                     <div class="form-check">
-                        <input class="form-check-input @error('tecnologies') is-inavlid @enderror" type="checkbox"
+                        <input class="form-check-input @error('technologies') is-inavlid @enderror" type="checkbox"
                             value="{{ $technology->id }}" id="technology-{{ $technology->id }}" name="technologies[]"
                             {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
                         <label class="form-check-label" for="technology-{{ $technology->id }}"> {{ $technology->name }}
@@ -90,7 +90,7 @@
                 @endforeach
                 {{-- MULTISELECTION 👇 --}}
 
-                {{-- <select multiple class="form-select @error('tecnologies') is-inavlid @enderror " name="technologies[] "
+                {{-- <select multiple class="form-select @error('technologies') is-inavlid @enderror " name="technologies[] "
                     id="technologies">
                     <option selected disabled>Select a technology</option>
                     @foreach ($technologies as $technology)
@@ -102,7 +102,7 @@
                 <label for="technologies" class="form-label">Technologies</label> --}}
 
 
-                @error('tecnologies')
+                @error('technologies')
                     <div class="text-danger py-2">
                         {{ $message }}
                     </div>

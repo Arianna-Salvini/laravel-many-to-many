@@ -23,7 +23,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'type_id'=>'nullable|exists:types,id',
-            'tecnologies'=>'exists:tecnologies,id',
+            'technologies'=>'exists:technologies,id',
             'title'=>'required|min:5|max:50',
             'subtitle'=>'nullable',
             'image'=>'nullable',
