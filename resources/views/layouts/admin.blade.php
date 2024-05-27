@@ -30,7 +30,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/admin') }}">
                     <h2 class="text-danger">
-                        Portfolio 2
+                        Portfolio 3
                     </h2>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
