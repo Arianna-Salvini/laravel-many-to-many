@@ -75,8 +75,11 @@
                                 <td>
                                     {{-- @dd($project->tecnology)  --}}
                                     @foreach ($project->technologies as $technology)
-                                        {{ $technology->name }}
+                                        <div class="d-flex justify-content-center p-1 m-1 bg-primary text-light rounded">
+                                            {{ $technology->name }}
+                                        </div>
                                     @endforeach
+
                                 </td>
                                 <td>{{ $project->url }}</td>
                                 <td
