@@ -16,8 +16,8 @@
             <div>
                 <h3>{{ $project->title }}</h3>
                 <h5>{{ $project->subtitle }}</h5>
-                <strong>Type: </strong>
-                <div class="metadata">
+                <div class="metadata my-3">
+                    <strong>Type: </strong>
                     {{ $project->type ? $project->type->name : 'N/A' }}
                     {{-- @if ($project->type)
                         {{ $project->type->name }}
