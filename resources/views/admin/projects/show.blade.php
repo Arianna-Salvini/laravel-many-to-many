@@ -16,8 +16,8 @@
             <div>
                 <h3>{{ $project->title }}</h3>
                 <h5>{{ $project->subtitle }}</h5>
+                <strong>Type: </strong>
                 <div class="metadata">
-                    <strong>Type: </strong>
                     {{ $project->type ? $project->type->name : 'N/A' }}
                     {{-- @if ($project->type)
                         {{ $project->type->name }}
@@ -25,8 +25,16 @@
                         N/A
                     @endif --}}
                 </div>
+                <div>
+                    <strong>Technologies:</strong>
+                    @foreach ($project->technologies as $technology)
+                        <span class="px-2 py-1 m-1 bg-primary rounded text-light">
+                            {{ $technology->name }}
+                        </span>
+                    @endforeach
+                </div>
             </div>
-            <div class="d-flex align-items-center py-5">
+            <div class="d-flex align-items-center py-5 mt-3">
                 <div>
                     @if (Str::startsWith($project->image, 'https://'))
                         <img loading="lazy" src="{{ $project->image }}" alt="{{ $project->title }}">
