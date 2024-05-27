@@ -52,8 +52,7 @@
                 </label>
                 <input type="file" class="form-control @error('image') is-inavlid @enderror" name="image"
                     id="image" aria-describedby="imageHelper" />
-                <small id="imageHelper" class="form-text text-secondary">Type the image of your new
-                    project</small l>
+                <small id="imageHelper" class="form-text text-secondary">Type the image of your new project</small l>
                 @error('image')
                     <div class="text-danger py-2">
                         {{ $message }}
