@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Contracts\View\Factory;
@@ -19,7 +20,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
         return view('admin.projects.index', ['projects' =>Project::orderByDesc('id')->paginate(7)]);
     }
@@ -27,17 +28,18 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() : View
+    public function create()
     {
         $types=Type::all();
+        $techcnologies=Technology::all();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request): RedirectResponse
+    public function store(StoreProjectRequest $request)
     {
         //dd($request->all());
         
@@ -61,7 +63,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project): View
+    public function show(Project $project) 
     {
         return view('admin/projects/show', compact('project'));
     }
@@ -69,7 +71,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project): View
+    public function edit(Project $project)
     {
         $types=Type::all();
         
@@ -79,7 +81,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project): RedirectResponse
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         // dd($request->all());
 
@@ -100,7 +102,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project): RedirectResponse
+    public function destroy(Project $project)
     {
 
         if($project->image){
