@@ -31,7 +31,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types=Type::all();
-        $techcnologies=Technology::all();
+        $technologies=Technology::all();
 
         return view('admin.projects.create', compact('types', 'technologies'));
     }
@@ -51,6 +51,8 @@ class ProjectController extends Controller
         $image_path=Storage::put('uploads', $validated['image']);
         $validated['image']=$image_path;
         };
+
+        
         // dd($validated, $image_path);
         // dd($validated);
         Project::create($validated);

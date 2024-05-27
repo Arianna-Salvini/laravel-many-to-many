@@ -63,14 +63,37 @@
 
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>
-                <select class="form-select" name="type_id" id="type_id">
+                <select class="form-select @error('type') is-inavlid @enderror" name="type_id" id="type_id">
                     <option selected disabled>Select a type</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
                             {{ $type->name }} </option>
                     @endforeach
-
                 </select>
+                @error('type')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+
+                <select multiple class="form-select @error('tecnologies') is-inavlid @enderror " name="technologies[] "
+                    id="technologies">
+                    <option selected disabled>Select a technology</option>
+                    @foreach ($technologies as $technology)
+                        <option value="{{ $technology->id }}"
+                            {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
+                            {{ $technology->name }} </option>
+                    @endforeach
+                </select>
+                @error('tecnologies')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+                <label for="technologies" class="form-label">Technologies</label>
             </div>
 
             <div class="mb-3">
