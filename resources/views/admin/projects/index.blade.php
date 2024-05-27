@@ -31,10 +31,11 @@
                             <th scope="col">ID</th>
                             <th scope="col">IMAGE</th>
                             <th scope="col">TITLE</th>
-                            <th scope="col">SLUG</th>
+                            {{-- <th scope="col">SLUG</th> --}}
                             <th scope="col">SUBTITLE</th>
-                            <th scope="col">DESCRIPTION</th>
+                            {{-- <th scope="col">DESCRIPTION</th> --}}
                             <th scope="col">TYPE</th>
+                            <th scope="col">TECHNOLOGIES</th>
                             <th scope="col">URL</th>
                             <th scope="col" class="text-center">ACTION</th>
                         </tr>
@@ -56,10 +57,13 @@
                                     {{-- </a> --}}
                                 </td>
                                 <td>{{ $project->title }}</td>
-                                <td>{{ $project->slug }}</td>
+
+                                {{-- <td>{{ $project->slug }}</td> --}}
+
                                 <td>{{ $project->subtitle }}</td>
 
-                                <td>{{ $project->description }}</td>
+                                {{-- <td>{{ $project->description }}</td> --}}
+                                <td>{{ $project->technologies }}</td>
 
                                 <td>
                                     @if ($project->type)
