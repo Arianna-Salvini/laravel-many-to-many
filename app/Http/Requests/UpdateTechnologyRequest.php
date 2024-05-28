@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTechnologyRequest extends FormRequest
 {
@@ -22,7 +23,8 @@ class UpdateTechnologyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+                'name' => ['required', 'max:150', Rule::unique('technologies')->ignore($this->technology->id)]
+            ];
+     
     }
 }
