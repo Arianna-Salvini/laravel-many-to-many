@@ -37,7 +37,7 @@ class TechnologyController extends Controller
 
         Technology::create($validated);
 
-        return to_route('admin.technologies.technologies')->with('message', 'New technology created successfully');
+        return to_route('admin.technologies.index')->with('message', 'New technology created successfully');
     }
 
     /**
@@ -67,7 +67,7 @@ class TechnologyController extends Controller
 
         $technology->update($validated);
 
-        return to_route('admin.technologies.technologies')->with('message', "Technology $technology->name edited successfully");
+        return to_route('admin.technologies.index')->with('message', "Technology $technology->name edited successfully");
     }
 
     /**

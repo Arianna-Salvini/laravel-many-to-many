@@ -30,10 +30,18 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
 
+
+// Technology routes
         Route::resource('technologies', TechnologyController::class)->parameters([
             'technologies' => 'technology:slug'
         ]);
+        Route::get('technologies', [TechnologyController::class, 'index'])->name('technologies.index');
 
+        Route::post('technologies', [TechnologyController::class, 'store'])->name('technologies.store');
+
+        Route::put('technologies/{technology}', [TechnologyController::class, 'update'])->name('technologies.update');
+
+        Route::delete('technologies/{technology}', [TechnologyController::class, 'destroy'])->name('technologies.destroy');
     });
 
 
