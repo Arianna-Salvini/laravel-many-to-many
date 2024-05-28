@@ -21,15 +21,15 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">Add a New Technology</label>
                     <div class="d-flex">
-                        <input type="text" class="form-control w-50 @error('name') is-invalid @enderror" name="name"
+                        <input type="text" class="rounded w-50 @error('name') is-invalid @enderror " name="name"
                             id="name" aria-describedby="nameHelper" value="{{ old('name') }}" />
 
-                        <button type="submit" class="btn btn-outline-dark px-3 py-2 rounded">
+                        <button type="submit" class="btn btn-outline-dark px-3 py-2 rounded ">
                             <i class="fa fa-files-o" aria-hidden="true"></i>
                             Add
                         </button>
                     </div>
-                    <small id="nameHelper" class="form-text text-dark">Type your new technology</small>
+                    <small id="nameHelper" class="form-text text-secondary">Type your new technology</small>
 
                     @error('name')
                         <div class="text-danger py-2">
@@ -39,7 +39,6 @@
                 </div>
             </form>
         </section>
-
 
         {{-- Table for index method to see all the technologies --}}
         <section class="bg-body-tertiary mt-5 text-center ">
@@ -58,13 +57,12 @@
                 </div>
             @endif
 
-            <div class="table-responsive" style="font-size:0.8rem">
-                <table class="table table-secondary table-striped table-bordered">
+            <div class="table" style="font-size:0.8rem">
+                <table class="table table-secondary table-striped table-bordered align-middle">
                     <thead>
-                        <tr>
+                        <tr class="table-dark text-light">
                             <th scope="col">ID</th>
-
-                            <th scope="col">NAME</th>
+                            <th scope="col">TECHNOLOGY NAME</th>
                             <th scope="col">SLUG</th>
 
                             <th scope="col" class="text-center">ACTION</th>
@@ -73,19 +71,14 @@
                     <tbody>
                         @forelse ($technologies as $technology)
                             <tr class="">
-
                                 <td>{{ $technology->id }}</td>
                                 <td>{{ $technology->name }}</td>
-
                                 <td>
-                                    <a href="{{ route('admin.technologies.edit', $technology) }}" class="px-2 w-100">
-                                        <span style="font-size:0.9rem"> {{ $technology->slug }} </span>
-                                    </a>
+                                    {{ $technology->slug }}
                                 </td>
-                                <td
-                                    class="text-center d-flex flex-column justify-content-center align-items-center gap-2 p-3">
+                                <td class="text-center p-1">
                                     <!-- Modal trigger button -->
-                                    <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                                         data-bs-target="#modal-{{ $technology->id }}">
                                         <i class="fas fa-trash fa-xs fa-fw"></i>
                                         <span style="font-size: 0.7rem" class="text-uppercase">Delete</span>
